@@ -7,6 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CF02D7642B47A2710091D144 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF02D7632B47A2710091D144 /* MainView.swift */; };
+		CF02D76F2B4835750091D144 /* BookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF02D76E2B4835750091D144 /* BookViewModel.swift */; };
+		CF02D7712B4835C00091D144 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF02D7702B4835C00091D144 /* Book.swift */; };
+		CF02D7732B4835C70091D144 /* Loan.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF02D7722B4835C70091D144 /* Loan.swift */; };
+		CF02D7762B4835DA0091D144 /* DetailLoan.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF02D7752B4835DA0091D144 /* DetailLoan.swift */; };
+		CF02D7782B4835E50091D144 /* Member.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF02D7772B4835E50091D144 /* Member.swift */; };
+		CF02D77A2B487B380091D144 /* BookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF02D7792B487B380091D144 /* BookView.swift */; };
+		CF02D77C2B487B480091D144 /* LoanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF02D77B2B487B480091D144 /* LoanView.swift */; };
+		CF02D77E2B487C6A0091D144 /* DetailBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF02D77D2B487C6A0091D144 /* DetailBookView.swift */; };
+		CF02D7802B487C740091D144 /* AddBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF02D77F2B487C740091D144 /* AddBookView.swift */; };
+		CF02D7822B48804D0091D144 /* LoanViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF02D7812B48804D0091D144 /* LoanViewModel.swift */; };
+		CF02D7842B48899E0091D144 /* AddLoanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF02D7832B48899E0091D144 /* AddLoanView.swift */; };
+		CF02D7862B488CB40091D144 /* ModalHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF02D7852B488CB40091D144 /* ModalHeader.swift */; };
 		CF35364B2B47A0BD00EF7205 /* CertificationApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF35364A2B47A0BD00EF7205 /* CertificationApp.swift */; };
 		CF35364D2B47A0BD00EF7205 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF35364C2B47A0BD00EF7205 /* ContentView.swift */; };
 		CF35364F2B47A0BE00EF7205 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF35364E2B47A0BE00EF7205 /* Assets.xcassets */; };
@@ -34,6 +47,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CF02D7632B47A2710091D144 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		CF02D76E2B4835750091D144 /* BookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookViewModel.swift; sourceTree = "<group>"; };
+		CF02D7702B4835C00091D144 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
+		CF02D7722B4835C70091D144 /* Loan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loan.swift; sourceTree = "<group>"; };
+		CF02D7752B4835DA0091D144 /* DetailLoan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailLoan.swift; sourceTree = "<group>"; };
+		CF02D7772B4835E50091D144 /* Member.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Member.swift; sourceTree = "<group>"; };
+		CF02D7792B487B380091D144 /* BookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookView.swift; sourceTree = "<group>"; };
+		CF02D77B2B487B480091D144 /* LoanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanView.swift; sourceTree = "<group>"; };
+		CF02D77D2B487C6A0091D144 /* DetailBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailBookView.swift; sourceTree = "<group>"; };
+		CF02D77F2B487C740091D144 /* AddBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookView.swift; sourceTree = "<group>"; };
+		CF02D7812B48804D0091D144 /* LoanViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanViewModel.swift; sourceTree = "<group>"; };
+		CF02D7832B48899E0091D144 /* AddLoanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLoanView.swift; sourceTree = "<group>"; };
+		CF02D7852B488CB40091D144 /* ModalHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalHeader.swift; sourceTree = "<group>"; };
 		CF3536472B47A0BD00EF7205 /* Certification.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Certification.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF35364A2B47A0BD00EF7205 /* CertificationApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificationApp.swift; sourceTree = "<group>"; };
 		CF35364C2B47A0BD00EF7205 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -71,9 +97,46 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CF02D7602B47A1300091D144 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CF02D7632B47A2710091D144 /* MainView.swift */,
+				CF02D7792B487B380091D144 /* BookView.swift */,
+				CF02D77B2B487B480091D144 /* LoanView.swift */,
+				CF02D77D2B487C6A0091D144 /* DetailBookView.swift */,
+				CF02D77F2B487C740091D144 /* AddBookView.swift */,
+				CF02D7832B48899E0091D144 /* AddLoanView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CF02D7612B47A1420091D144 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CF02D7702B4835C00091D144 /* Book.swift */,
+				CF02D7722B4835C70091D144 /* Loan.swift */,
+				CF02D7752B4835DA0091D144 /* DetailLoan.swift */,
+				CF02D7772B4835E50091D144 /* Member.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CF02D7622B47A1480091D144 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CF02D76E2B4835750091D144 /* BookViewModel.swift */,
+				CF02D7812B48804D0091D144 /* LoanViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		CF35363E2B47A0BD00EF7205 = {
 			isa = PBXGroup;
 			children = (
+				CF02D7852B488CB40091D144 /* ModalHeader.swift */,
+				CF02D7622B47A1480091D144 /* ViewModel */,
+				CF02D7612B47A1420091D144 /* Model */,
+				CF02D7602B47A1300091D144 /* View */,
 				CF3536492B47A0BD00EF7205 /* Certification */,
 				CF35365A2B47A0BE00EF7205 /* CertificationTests */,
 				CF3536642B47A0BE00EF7205 /* CertificationUITests */,
@@ -257,8 +320,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF02D77A2B487B380091D144 /* BookView.swift in Sources */,
 				CF35364D2B47A0BD00EF7205 /* ContentView.swift in Sources */,
+				CF02D7732B4835C70091D144 /* Loan.swift in Sources */,
+				CF02D76F2B4835750091D144 /* BookViewModel.swift in Sources */,
+				CF02D77C2B487B480091D144 /* LoanView.swift in Sources */,
+				CF02D7862B488CB40091D144 /* ModalHeader.swift in Sources */,
+				CF02D7642B47A2710091D144 /* MainView.swift in Sources */,
+				CF02D7712B4835C00091D144 /* Book.swift in Sources */,
+				CF02D7802B487C740091D144 /* AddBookView.swift in Sources */,
+				CF02D7762B4835DA0091D144 /* DetailLoan.swift in Sources */,
 				CF35364B2B47A0BD00EF7205 /* CertificationApp.swift in Sources */,
+				CF02D7842B48899E0091D144 /* AddLoanView.swift in Sources */,
+				CF02D7782B4835E50091D144 /* Member.swift in Sources */,
+				CF02D77E2B487C6A0091D144 /* DetailBookView.swift in Sources */,
+				CF02D7822B48804D0091D144 /* LoanViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
