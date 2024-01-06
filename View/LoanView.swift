@@ -18,6 +18,7 @@ struct LoanView: View {
                         Text("Active Loans")
                             .bold()
                         Spacer()
+//                        pindah halaman add loan
                         NavigationLink(destination: AddLoanView()) {
                             Image(systemName: "plus")
                                 .foregroundStyle(Color.blue)
@@ -26,6 +27,7 @@ struct LoanView: View {
                     .font(.title)
                     .padding()
                     
+//                    menampilan daftar loan yang aktif
                     List(loanViewModel.listLoanMember, id: \.id) { loan in
                         NavigationLink(destination: DetailLoanView(selectedLoan: loan)) {
                             HStack {
@@ -41,6 +43,8 @@ struct LoanView: View {
                                         .foregroundColor(Color.black)
                                 }
                                 Spacer()
+                                
+//                                menampilkan status loan
                                 let status = loan.loan_status == 1 ? "Active" : "Inactive";
                                 Text(status)
                                     .font(.footnote)
@@ -49,7 +53,7 @@ struct LoanView: View {
                         }
                     }
                     .onAppear {
-//                        loanViewModel.readLoanAll()
+//                        hit api function
                         loanViewModel.readLoanAllMember()
                     }
                     

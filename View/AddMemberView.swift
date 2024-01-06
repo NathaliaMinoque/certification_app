@@ -15,20 +15,19 @@ struct AddMemberView: View {
     
     var body: some View {
         VStack{
-            //            TextField(selectedBarang.nama)
-            //            Text(selectedBarang.nama)
-            
             ModalHeader(title: "Create Member",
                         leftButton: "Back",
                         rightButton: "Save",
                         leftFunction: {dismiss()},
                         rightFunction: {
+//               CALL FUNCTION HIT API BUAT MEMBER
                 memberViewModel.createMember(member: memberViewModel.member)
                 print(memberViewModel.member)
                             dismiss()
             })
             
             Form {
+//                TEXTFIELD UNTUK PENGISIAN DATA MEMBER BARU
                 Section(header: Text("Member Details")) {
                     TextField("Name", text: $memberViewModel.member.name)
                     TextField("Address", text: $memberViewModel.member.address)

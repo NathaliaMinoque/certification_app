@@ -18,6 +18,7 @@ struct BookView: View {
                         Text("Catalogue")
                             .bold()
                         Spacer()
+//                        pindah add book view
                         NavigationLink(destination: AddBookView()) {
                             Image(systemName: "plus")
                                 .foregroundStyle(Color.blue)
@@ -26,6 +27,7 @@ struct BookView: View {
                     .font(.title)
                     .padding()
                     
+//                    menampilkan list buku
                     List(bookViewModel.listBook, id: \.id) { book in
                         NavigationLink(destination: DetailBookView(selectedBook: book)) {
                             HStack {
@@ -42,6 +44,8 @@ struct BookView: View {
                                         .foregroundColor(Color.black)
                                 }
                                 Spacer()
+                                
+//                                menampilkan status buku
                                 let status = book.loan_status == 0 ? "Available" : "Unavailable";
                                 Text(status)
                                     .font(.footnote)
@@ -50,6 +54,7 @@ struct BookView: View {
                         }
                     }
                     .onAppear {
+//                        hit function api
                         bookViewModel.readBookAll()
                     }
                     

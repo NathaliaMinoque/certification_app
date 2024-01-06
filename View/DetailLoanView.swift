@@ -21,10 +21,13 @@ struct DetailLoanView: View {
                         rightButton: "Returned",
                         leftFunction: {dismiss()},
                         rightFunction: {
+                
+//                HIT API FUNC UPDATE LOAN
                 loanViewModel.updateLoan(idLoan: selectedLoan.id)
                 dismiss()
             })
             
+//            MENAMPILKAN DATA LOAN
             HStack{
                 VStack(alignment: .leading){
                     Text("Name")
@@ -50,8 +53,8 @@ struct DetailLoanView: View {
             }
             .padding(.bottom)
             
+//            MENAMPILKAN DETAIL BUKU YANG DIPINJAM
             ForEach(detailLoanViewModel.listDetailLoanEntity, id: \.self) { detail in
-//                Text("\(detail.title), \(detail.published_year)")
                 
                 HStack(){
                     Image(systemName: "book.closed")
@@ -69,6 +72,8 @@ struct DetailLoanView: View {
             }
          
             Spacer()
+            
+//            BUTTON DELETE
             Button(action: {
                 loanViewModel.deleteLoan(idLoan: selectedLoan.id)
                 dismiss()
@@ -85,6 +90,7 @@ struct DetailLoanView: View {
         }
         .padding()
         .onAppear {
+//            HIT API FUNCTION
             detailLoanViewModel.readDetailLoan(idLoan: selectedLoan.id)
         }
     }

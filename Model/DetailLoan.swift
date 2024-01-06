@@ -7,6 +7,7 @@
 
 import Foundation
 
+//model detail loan
 struct DetailLoan: Identifiable, Codable, Hashable {
     let id: Int
     var id_loan: Int
@@ -15,6 +16,7 @@ struct DetailLoan: Identifiable, Codable, Hashable {
 //    var updatedAt: Date
 }
 
+//model detail loan string
 struct DetailLoanEntity: Identifiable, Codable, Hashable {
     let id: Int
     var id_loan: Int

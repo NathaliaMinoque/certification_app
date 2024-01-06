@@ -36,6 +36,7 @@ class LoanViewModel: ObservableObject {
 //        }.resume()
 //    }
     
+//    get semua daftar loan dan member
     func readLoanAllMember() {
         guard let url = URL(string: "\(prefixURL)/readAllLoanMember") else {
             return
@@ -59,6 +60,7 @@ class LoanViewModel: ObservableObject {
     }
     
     
+//    buat loan baru
     func createLoan(idMember: String, book: [Book]){
         
        
@@ -130,6 +132,8 @@ class LoanViewModel: ObservableObject {
         }
     }
     
+    
+//    update loan
     func updateLoan(idLoan: Int) {
         var components = URLComponents(string: "\(prefixURL)/update")!
 
@@ -184,6 +188,7 @@ class LoanViewModel: ObservableObject {
         }
     }
     
+//    delete loan
     func deleteLoan(idLoan: Int) {
         var components = URLComponents(string: "\(prefixURL)/delete")!
 

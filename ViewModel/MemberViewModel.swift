@@ -15,6 +15,7 @@ class MemberViewModel: ObservableObject {
     @Published var member: Member = Member(id: 0, name: "", address: "", phone: "")
 //    @Published var bookString: BookString = BookString(id: "", title: "", author: "", published_year: "", loan_status: "")
     
+//    get daftar smua member
     func readMemberAll() {
         guard let url = URL(string: "\(prefixURL)/readAll") else {
             return
@@ -58,6 +59,7 @@ class MemberViewModel: ObservableObject {
 //        }.resume()
 //    }
     
+//    update detail member
     func updateMember(member: Member) {
         
         guard let url = URL(string: "\(prefixURL)/update") else {
@@ -105,6 +107,7 @@ class MemberViewModel: ObservableObject {
         }
     }
     
+//buat member baru
     func createMember(member: Member) {
       
         guard let url = URL(string: "\(prefixURL)/create") else {
@@ -148,6 +151,7 @@ class MemberViewModel: ObservableObject {
         }
     }
     
+//    menghapus member yang ada
     func deleteMember(idMember: Int) {
         var components = URLComponents(string: "\(prefixURL)/delete")!
 

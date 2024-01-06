@@ -15,6 +15,7 @@ class BookViewModel: ObservableObject {
     @Published var book: Book = Book(id: 0, title: "", author: "", published_year: "", loan_status: 0)
     @Published var bookString: BookString = BookString(id: "", title: "", author: "", published_year: "", loan_status: "")
     
+//    get semua data buku
     func readBookAll() {
         guard let url = URL(string: "\(prefixURL)/readAll") else {
             return
@@ -36,6 +37,7 @@ class BookViewModel: ObservableObject {
         }.resume()
     }
     
+//    get buku yang tersedia
     func readBookByAvailability() {
         guard let url = URL(string: "\(prefixURL)/readByAvailability") else {
             return
@@ -58,6 +60,7 @@ class BookViewModel: ObservableObject {
         }.resume()
     }
     
+//    update buku detail
     func updateBook(bookString: BookString) {
         let book = Book(id: Int(bookString.id) ?? 0,
                         title: bookString.title,
@@ -112,6 +115,7 @@ class BookViewModel: ObservableObject {
         }
     }
     
+//    buat buku baru
     func createBook(bookString: BookString) {
         let book = Book(id: Int(bookString.id) ?? 0,
                         title: bookString.title,
@@ -160,6 +164,7 @@ class BookViewModel: ObservableObject {
         }
     }
     
+//    menghapus buku
     func deleteBook(idBook: Int) {
         var components = URLComponents(string: "\(prefixURL)/delete")!
 

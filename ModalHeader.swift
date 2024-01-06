@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+//Untuk header component
 struct ModalHeader: View {
     
     var title: String

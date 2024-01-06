@@ -12,6 +12,7 @@ class DetailLoanViewModel: ObservableObject {
     var prefixURL: String = "http://127.0.0.1:8000/api/detailLoan"
     @Published var listDetailLoanEntity: [DetailLoanEntity] = [DetailLoanEntity(id: 0, id_loan: 0, id_book: 0, title: "", author: "", published_year: "", loan_status: 0)]
     
+//    get detail loan
     func readDetailLoan(idLoan: Int) {
 //        self.listDetailLoanEntity = [DetailLoanEntity(id: 0, id_loan: 0, id_book: 0, title: "", author: "", published_year: "", loan_status: 0)]
         

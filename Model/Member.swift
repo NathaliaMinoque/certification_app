@@ -7,6 +7,7 @@
 
 import Foundation
 
+//model member
 struct Member: Identifiable, Codable, Hashable {
     let id: Int
     var name: String

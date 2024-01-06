@@ -7,6 +7,7 @@
 
 import Foundation
 
+//model loan default
 struct Loan: Identifiable, Codable, Hashable {
     let id: Int
     var id_member: Int
@@ -18,6 +19,7 @@ struct Loan: Identifiable, Codable, Hashable {
 //    var updatedAt: Date
 }
 
+//model loan join member
 struct LoanMember: Identifiable, Codable, Hashable {
     let id: Int
     var id_member: Int
@@ -32,6 +34,7 @@ struct LoanMember: Identifiable, Codable, Hashable {
 //    var updatedAt: Date
 }
 
+//model loan string
 struct LoanEntity: Identifiable, Codable {
     var id: Int
     var id_member: String

@@ -29,6 +29,7 @@ struct AddBookView: View {
                             dismiss()
             })
             
+//            menampilkan form
             Form {
                 Section(header: Text("Book Details")) {
                     TextField("Title", text: $bookViewModel.bookString.title)

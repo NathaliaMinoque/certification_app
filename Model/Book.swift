@@ -7,6 +7,7 @@
 
 import Foundation
 
+//model book default
 struct Book: Identifiable, Codable, Hashable {
     let id: Int
     var title: String
@@ -17,6 +18,7 @@ struct Book: Identifiable, Codable, Hashable {
 //    var updatedAt: Date
 }
 
+//model book string
 struct BookString: Identifiable, Codable, Hashable {
     let id: String
     var title: String
@@ -27,6 +29,7 @@ struct BookString: Identifiable, Codable, Hashable {
 //    var updatedAt: Date
 }
 
+//model response
 struct Response:Codable {
     let status_code: Int
     let message: String

@@ -18,6 +18,8 @@ struct MemberView: View {
                         Text("Members")
                             .bold()
                         Spacer()
+                        
+//                        PINDAH ADD MEMBER VIEW
                         NavigationLink(destination: AddMemberView()) {
                             Image(systemName: "plus")
                                 .foregroundStyle(Color.blue)
@@ -26,6 +28,7 @@ struct MemberView: View {
                     .font(.title)
                     .padding()
                     
+//                    MENAMPILKAN DAFTAR MEMBER
                     List(memberViewModel.listMember, id: \.id) { member in
                         NavigationLink(destination: DetailMemberView(selectedMember: member)) {
                             HStack {
@@ -45,6 +48,7 @@ struct MemberView: View {
                         }
                     }
                     .onAppear {
+//                        HIT API FUNCTION
                         memberViewModel.readMemberAll()
                     }
                     
