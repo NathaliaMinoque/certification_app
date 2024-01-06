@@ -15,20 +15,24 @@ struct BookView: View {
             ZStack{
                 VStack{
                     HStack{
-                        Text("List Barang")
+                        Text("Catalogue")
                             .bold()
                         Spacer()
                         NavigationLink(destination: AddBookView()) {
                             Image(systemName: "plus")
-                                .foregroundStyle(Color.black)
+                                .foregroundStyle(Color.blue)
                         }
                     }
                     .font(.title)
                     .padding()
                     
                     List(bookViewModel.listBook, id: \.id) { book in
-                        NavigationLink(destination: DetailBookView()) {
+                        NavigationLink(destination: DetailBookView(selectedBook: book)) {
                             HStack {
+                                Image(systemName: "book.closed")
+                                    .foregroundStyle(Color.black)
+                                    .font(.title)
+                                    .padding(.trailing)
                                 VStack(alignment: .leading) {
                                     Text(book.title)
                                         .font(.headline)
@@ -38,9 +42,10 @@ struct BookView: View {
                                         .foregroundColor(Color.black)
                                 }
                                 Spacer()
-                                Text("\(book.loan_status)")
+                                let status = book.loan_status == 0 ? "Available" : "Unavailable";
+                                Text(status)
                                     .font(.footnote)
-                                    .foregroundColor(Color.black)
+                                    .foregroundColor(Color.gray)
                             }
                         }
                     }

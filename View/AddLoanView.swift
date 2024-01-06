@@ -15,73 +15,108 @@ struct AddLoanView: View {
     @State var pickerCount: Int = 1
 //    @State var selectedBooks: [Book] = []
     @State var selectedBooksString: [String] = []
+    @State var showingAlert: Bool = false
+    @State var isLoan: Bool = false
     
     var body: some View {
         VStack{
-            ModalHeader(title: "Add Loan",
-                        leftButton: "Back",
-                        rightButton: "Save",
-                        leftFunction: {dismiss()},
-                        rightFunction: {
-                
-//                ForEach(selectedBooks) { book in
-//                    let selectedBooksString: [String] = selectedBooks.map { String($0.id) }
-//                }
-                for book in loanViewModel.selectedBooks {
-                    selectedBooksString.append(String(book.id))
-                }
-                
-                loanViewModel.createLoan(idMember: loanViewModel.loanEntity.id_member, book: loanViewModel.selectedBooks)
-                
-                dismiss()
-            })
-            
-            Form{
-                Section(header: Text("MEMBER")) {
-                    TextField("ID Member", text: $loanViewModel.loanEntity.id_member)
-                    //                                TextField("book", text: $loanViewModel.)
+            if bookViewModel.listBookAvailable.count == 0 {
+                Text("No available book to loan").tag("n")
+              }
+            else{
+                ModalHeader(title: "Create Loan",
+                            leftButton: "Back",
+                            rightButton: "Save",
+                            leftFunction: {dismiss()},
+                            rightFunction: {
                     
-                    //                                ForEach((0..<pickerCount), id: \.self) {_ in
-                    //                                    Picker("ID Member", selection: $selectedBook) {
-                    //                                        ForEach(colors, id: \.self) {
-                    //                                            Text($0)
-                    //                                        }
-                    //                                    }
-                    //                                }
+                    isLoan = false
                     
-                }
-                
-                Section(header: Text("Books")) {
-                    ForEach((0..<pickerCount), id: \.self) {index in
-//                 selectedBooks.append(contentsOf: [Book(id: 0, title: "", author: "", published_year: "", loan_status: 0)])
-                        
-                        //                        Picker("Title", selection: $selectedBooks[index]) {
-                        //                                                              ForEach(bookViewModel.listAvailable, id: \.self) { book in
-                        //                                                                  Text(book.title)
-                        //                                                              }
-                        //                                                          }
-                        
-                        Picker("Title", selection: $loanViewModel.selectedBooks[index]) {
-                            ForEach(bookViewModel.listBookAvailable, id: \.self) { book in
-                                Text(book.title).tag("")
-                            }
+                    print("idmembeeer",loanViewModel.loanEntity.id_member)
+                    
+                    
+//                    for loan in loanViewModel.listLoanMember{
+//                        if loan.id_member == Int(loanViewModel.loanEntity.id_member) {
+//                            print("INI LOAN MEMBER", String(loan.id_member))
+//                            isLoan = true
+//                        }
+//                        }
+                    
+                    if loanViewModel.loanEntity.id_member != ""{
+ 
+                        for book in loanViewModel.selectedBooks {
+                            selectedBooksString.append(String(book.id))
                         }
                         
+                        loanViewModel.createLoan(idMember: loanViewModel.loanEntity.id_member, book: loanViewModel.selectedBooks)
+                        
+                        dismiss()
+                    }else{
+                        showingAlert = true
+                    }
+                    
+                    
+                    
+                
+                })
+                
+                Form{
+                    Section(header: Text("MEMBER")) {
+                        TextField("ID Member", text: $loanViewModel.loanEntity.id_member)
                         
                     }
-                    Button(action: {
-                        pickerCount+=1
-                        loanViewModel.selectedBooks.append(contentsOf: [Book(id: 0, title: "", author: "", published_year: "", loan_status: 0)])
-                        //                                    print(loanViewModel.selectedBooks)
-                    }, label: {
-                        Text("Add")
-                    })
+                    
+                  
+                    
+                    Section(header: Text("Books")) {
+                       
+                        ForEach((0..<pickerCount), id: \.self) {index in
+
+                            Picker("Title", selection: $loanViewModel.selectedBooks[index]) {
+                                ForEach(bookViewModel.listBookAvailable, id: \.self) { book in
+                                    Text("\(book.title), \(book.published_year)").tag("")
+                                }
+                            }
+                            
+                        }
+                        
+                        Button(action: {
+                            pickerCount+=1
+                            loanViewModel.selectedBooks.append(contentsOf: [Book(id: 0, title: "", author: "", published_year: "", loan_status: 0)])
+                            //                                    print(loanViewModel.selectedBooks)
+                        }, label: {
+                            Text("Add")
+                        })
+                    }
+                }
+                .alert(isPresented: $showingAlert) {
+                    Alert(
+                        title: Text("Could not save the data"),
+                        message: Text("Please fill out all details"),
+                        primaryButton: .destructive(Text("Discard")) {
+                            print("Deleting...")
+                            dismiss()
+                        },
+                        secondaryButton: .cancel()
+                    )
+                }
+                
+                .alert(isPresented: $isLoan) {
+                    Alert(
+                        title: Text("You have already loaned"),
+                        message: Text("Please return first"),
+                        primaryButton: .destructive(Text("Discard")) {
+                            print("Deleting...")
+                            dismiss()
+                        },
+                        secondaryButton: .cancel()
+                    )
                 }
             }
-            .onAppear{
-                bookViewModel.readBookByAvailability()
-            }
-            
+           
+        }
+        .onAppear{
+            bookViewModel.readBookByAvailability()
         }
         
     }

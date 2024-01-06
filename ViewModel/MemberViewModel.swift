@@ -1,5 +1,5 @@
 //
-//  LoanViewModel.swift
+//  MemberViewModel.swift
 //  Certification
 //
 //  Created by Nathalia Minoque Kusuma Salma Rasyid Jr. on 06/01/24.
@@ -7,37 +7,16 @@
 
 import Foundation
 
-class LoanViewModel: ObservableObject {
-    var prefixURL: String = "http://127.0.0.1:8000/api/loan"
-    @Published var listLoan: [Loan] = []
-    @Published var loan: Loan = Loan(id: 0, id_member: 0, borrowed_date: "", due_date: "", returned_date: "", loan_status: 0)
-    @Published var listLoanMember: [LoanMember] = []
-    @Published var loanEntity: LoanEntity = LoanEntity(id: 0, id_member: "", details: [])
-    @Published var selectedBooks: [Book] = [Book(id: 0, title: "", author: "", published_year: "", loan_status: 0)]
+class MemberViewModel: ObservableObject {
+    var prefixURL: String = "http://127.0.0.1:8000/api/member"
+    @Published var listMember: [Member] = []
+//    @Published var listIdBookAvailable: [String] = []
+//    @Published var listBookAvailable: [Book] = []
+    @Published var member: Member = Member(id: 0, name: "", address: "", phone: "")
+//    @Published var bookString: BookString = BookString(id: "", title: "", author: "", published_year: "", loan_status: "")
     
-//    func readLoanAll() {
-//        guard let url = URL(string: "\(prefixURL)/readAll") else {
-//            return
-//        }
-//        
-//        URLSession.shared.dataTask(with: url) { data, response, error in
-//            
-//            if let data = data {
-//                do {
-//                    let decodedResponse = try JSONDecoder().decode([Loan].self, from: data)
-//                    //                            print(decodedResponse)
-//                    DispatchQueue.main.async {
-//                        self.listLoan = decodedResponse
-//                    }
-//                } catch {
-//                    print("Error decoding response: \(error)")
-//                }
-//            }
-//        }.resume()
-//    }
-    
-    func readLoanAllMember() {
-        guard let url = URL(string: "\(prefixURL)/readAllLoanMember") else {
+    func readMemberAll() {
+        guard let url = URL(string: "\(prefixURL)/readAll") else {
             return
         }
         
@@ -45,11 +24,10 @@ class LoanViewModel: ObservableObject {
             
             if let data = data {
                 do {
-                    let decodedResponse = try JSONDecoder().decode([LoanMember].self, from: data)
+                    let decodedResponse = try JSONDecoder().decode([Member].self, from: data)
                     //                            print(decodedResponse)
                     DispatchQueue.main.async {
-                        self.listLoanMember = decodedResponse
-                        print("LIST LOAN MEMBER",self.listLoanMember)
+                        self.listMember = decodedResponse
                     }
                 } catch {
                     print("Error decoding response: \(error)")
@@ -58,28 +36,77 @@ class LoanViewModel: ObservableObject {
         }.resume()
     }
     
+//    func readBookByAvailability() {
+//        guard let url = URL(string: "\(prefixURL)/readByAvailability") else {
+//            return
+//        }
+//        
+//        URLSession.shared.dataTask(with: url) { data, response, error in
+//            
+//            if let data = data {
+//                do {
+//                    let decodedResponse = try JSONDecoder().decode([Book].self, from: data)
+//                    //                            print(decodedResponse)
+//                    DispatchQueue.main.async {
+//                        self.listBookAvailable = decodedResponse
+//                        print(self.listBookAvailable)
+//                    }
+//                } catch {
+//                    print("Error decoding response: \(error)")
+//                }
+//            }
+//        }.resume()
+//    }
     
-    func createLoan(idMember: String, book: [Book]){
+    func updateMember(member: Member) {
         
-       
-        let idBook: [String] = book.map { String($0.id) }
+        guard let url = URL(string: "\(prefixURL)/update") else {
+            return
+        }
         
-//        let loanEntity = LoanEntity(id: 0,
-//                                    id_member: idMember,
-//                                    id_book: idBook)
-//        print("loanentityyyyy \(loanEntity)")
-        
-//        let loanEntity = LoanEntity(id: 0,
-//                                    id_member: idMember,
-//                                    details: LoanDetails(id_book: idBook)
-//        )
-        
-        let loanDetailsArray = idBook.map { LoanDetails(id_book: $0) }
-        let loanEntity = LoanEntity(id: 0, id_member: idMember, details: loanDetailsArray)
-
-        
-        print(loanEntity)
-        
+        do{
+            let jsonEncoder = JSONEncoder()
+            let jsonData = try jsonEncoder.encode(member)
+            
+            var request = URLRequest(url: url)
+            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.httpMethod = "PUT"
+            request.httpBody = jsonData
+            
+            let session = URLSession.shared
+            let task = session.dataTask(with: request) { data, response, error in
+                if let error = error {
+                    // Handle HTTP request error
+                    print("eror",error)
+                } else if let data = data {
+                    // Handle HTTP request response
+//                    let decod
+                    do{
+                        let decodedResponse = try JSONDecoder().decode(Response.self, from: data)
+                        print("Min",decodedResponse)
+                    }catch{
+                        print("error decode")
+                    }
+                    
+                    //                    //                            print(decodedResponse)
+                    //                    DispatchQueue.main.async {
+                    //                        self.barang = decodedResponseedResponse = try JSONDecoder().decode(Barang.self, from: data)
+                                     
+                    print("data")
+                } else {
+                    // Handle unexpected error
+                    print("extra")
+                }
+            }
+                task.resume()
+        }
+        catch{
+            
+        }
+    }
+    
+    func createMember(member: Member) {
+      
         guard let url = URL(string: "\(prefixURL)/create") else {
             print("Not found url")
             return
@@ -87,8 +114,7 @@ class LoanViewModel: ObservableObject {
         
         do{
             let jsonEncoder = JSONEncoder()
-            let jsonData = try jsonEncoder.encode(loanEntity)
-            print(jsonData)
+            let jsonData = try jsonEncoder.encode(member)
             
             var request = URLRequest(url: url)
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -106,17 +132,9 @@ class LoanViewModel: ObservableObject {
                     do{
                         let decodedResponse = try JSONDecoder().decode(Response.self, from: data)
                         print("Min",decodedResponse)
-                        
-//                        self.selectedBooks = [Book(id: 0, title: "", author: "", published_year: "", loan_status: 0)]
-                        
                     }catch{
                         print("error decode")
                     }
-                    
-                    //                    //                            print(decodedResponse)
-                    //                    DispatchQueue.main.async {
-                    //                        self.barang = decodedResponseedResponse = try JSONDecoder().decode(Barang.self, from: data)
-                                     
                     print("data")
                 } else {
                     // Handle unexpected error
@@ -130,66 +148,11 @@ class LoanViewModel: ObservableObject {
         }
     }
     
-    func updateLoan(idLoan: Int) {
-        var components = URLComponents(string: "\(prefixURL)/update")!
-
-        print(idLoan)
-        components.queryItems = [
-            URLQueryItem(name: "id", value: "\(idLoan)")
-        ]
-
-        guard let url = components.url else {
-            return
-            //throw URLError(.badURL)
-        }
-        
-        do{
-//            let jsonEncoder = JSONEncoder()
-//            let jsonData = try jsonEncoder.encode(book)
-//            
-            var request = URLRequest(url: url)
-            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-            request.httpMethod = "PUT"
-//            request.httpBody = jsonData
-            
-            let session = URLSession.shared
-            let task = session.dataTask(with: request) { data, response, error in
-                if let error = error {
-                    // Handle HTTP request error
-                    print("eror",error)
-                } else if let data = data {
-                    // Handle HTTP request response
-//                    let decod
-                    do{
-                        let decodedResponse = try JSONDecoder().decode(Response.self, from: data)
-                        print("Min",decodedResponse)
-                    }catch{
-                        print("error decode")
-                    }
-                    
-                    //                    //                            print(decodedResponse)
-                    //                    DispatchQueue.main.async {
-                    //                        self.barang = decodedResponseedResponse = try JSONDecoder().decode(Barang.self, from: data)
-                                     
-                    print("data")
-                } else {
-                    // Handle unexpected error
-                    print("extra")
-                }
-            }
-                task.resume()
-        }
-        catch{
-            
-        }
-    }
-    
-    func deleteLoan(idLoan: Int) {
+    func deleteMember(idMember: Int) {
         var components = URLComponents(string: "\(prefixURL)/delete")!
 
-        print(idLoan)
         components.queryItems = [
-            URLQueryItem(name: "id", value: "\(idLoan)")
+            URLQueryItem(name: "id", value: "\(idMember)")
         ]
 
         guard let url = components.url else {
@@ -197,14 +160,18 @@ class LoanViewModel: ObservableObject {
             //throw URLError(.badURL)
         }
         
-        do{
-//            let jsonEncoder = JSONEncoder()
-//            let jsonData = try jsonEncoder.encode(book)
+//        guard let url = URL(string: "http://127.0.0.1:8000/api/barang/delete?id=\(idBarang)") else {
+//            return
+//        }
 //
+        do{
+            let jsonEncoder = JSONEncoder()
+            let jsonData = try jsonEncoder.encode(idMember)
+            
             var request = URLRequest(url: url)
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
             request.httpMethod = "DELETE"
-//            request.httpBody = jsonData
+            request.httpBody = jsonData
             
             let session = URLSession.shared
             let task = session.dataTask(with: request) { data, response, error in
@@ -220,10 +187,6 @@ class LoanViewModel: ObservableObject {
                     }catch{
                         print("error decode")
                     }
-                    
-                    //                    //                            print(decodedResponse)
-                    //                    DispatchQueue.main.async {
-                    //                        self.barang = decodedResponseedResponse = try JSONDecoder().decode(Barang.self, from: data)
                                      
                     print("data")
                 } else {
@@ -236,5 +199,9 @@ class LoanViewModel: ObservableObject {
         catch{
             
         }
+        
     }
 }
+
+
+

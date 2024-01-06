@@ -16,3 +16,19 @@ struct Book: Identifiable, Codable, Hashable {
 //    var createdAt: Date
 //    var updatedAt: Date
 }
+
+struct BookString: Identifiable, Codable, Hashable {
+    let id: String
+    var title: String
+    var author: String
+    var published_year: String
+    var loan_status: String
+//    var createdAt: Date
+//    var updatedAt: Date
+}
+
+struct Response:Codable {
+    let status_code: Int
+    let message: String
+//    var data: Book?
+}

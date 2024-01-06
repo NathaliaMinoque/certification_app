@@ -8,8 +8,37 @@
 import SwiftUI
 
 struct AddBookView: View {
+    
+    @ObservedObject var bookViewModel = BookViewModel()
+    @Environment(\.dismiss) var dismiss
+//    tangkap
+//    var selectedBook: Book
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack{
+            //            TextField(selectedBarang.nama)
+            //            Text(selectedBarang.nama)
+            
+            ModalHeader(title: "Create Book",
+                        leftButton: "Back",
+                        rightButton: "Save",
+                        leftFunction: {dismiss()},
+                        rightFunction: {
+                bookViewModel.createBook(bookString: bookViewModel.bookString)
+                print(bookViewModel.bookString)
+                            dismiss()
+            })
+            
+            Form {
+                Section(header: Text("Book Details")) {
+                    TextField("Title", text: $bookViewModel.bookString.title)
+                    TextField("Author", text: $bookViewModel.bookString.author)
+                    TextField("Published Year", text: $bookViewModel.bookString.published_year)
+                }
+            }
+            
+           
+        }
     }
 }
 

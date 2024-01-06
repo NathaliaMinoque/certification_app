@@ -30,7 +30,7 @@ struct ModalHeader: View {
             Spacer()
             
             Text(title)
-                .font(.system(size: 20, weight: .light))
+                .font(.system(size: 20, weight: .bold))
             
             Spacer()
             
@@ -40,6 +40,8 @@ struct ModalHeader: View {
             .buttonStyle(.plain)
 //            .disabled(isDisabled)
             .font(.system(size: 17))
+            .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
+            .bold()
         }
         .padding()
         

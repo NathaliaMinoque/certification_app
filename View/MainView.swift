@@ -12,9 +12,12 @@ struct MainView: View {
         TabView {
             BookView()
                 .tabItem {
-                    Label("Book", systemImage: "book")
+                    Label("Catalogue", systemImage: "book")
                 }
-            
+            MemberView()
+                .tabItem {
+                    Label("Member", systemImage: "person.3")
+                }
             LoanView()
                 .tabItem {
                     Label("Loan", systemImage: "list.dash")
