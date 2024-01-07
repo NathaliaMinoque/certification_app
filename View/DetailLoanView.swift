@@ -75,19 +75,19 @@ struct DetailLoanView: View {
             Spacer()
             
 //            BUTTON DELETE
-            Button(action: {
-                loanViewModel.deleteLoan(idLoan: selectedLoan.id)
-                dismiss()
-            }, label: {
-                HStack{
-                    Spacer()
-                    Text("Delete")
-                    Spacer()
-                }
-            })
-            .buttonStyle(.borderless)
-            .tint(.red)
-            .padding(.bottom)
+//            Button(action: {
+//                loanViewModel.deleteLoan(idLoan: selectedLoan.id)
+//                dismiss()
+//            }, label: {
+//                HStack{
+//                    Spacer()
+//                    Text("Delete")
+//                    Spacer()
+//                }
+//            })
+//            .buttonStyle(.borderless)
+//            .tint(.red)
+//            .padding(.bottom)
         }
         .padding()
         .onAppear {
