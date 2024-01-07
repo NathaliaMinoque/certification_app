@@ -15,7 +15,7 @@ struct LoanView: View {
             ZStack{
                 VStack{
                     HStack{
-                        Text("Active Loans")
+                        Text("Loans")
                             .bold()
                         Spacer()
 //                        pindah halaman add loan
