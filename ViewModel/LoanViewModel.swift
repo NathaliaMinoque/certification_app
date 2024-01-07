@@ -137,7 +137,7 @@ class LoanViewModel: ObservableObject {
     func updateLoan(idLoan: Int) {
         var components = URLComponents(string: "\(prefixURL)/update")!
 
-        print(idLoan)
+        print("INI ID LOAN",idLoan)
         components.queryItems = [
             URLQueryItem(name: "id", value: "\(idLoan)")
         ]

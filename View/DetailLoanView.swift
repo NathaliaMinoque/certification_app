@@ -24,6 +24,7 @@ struct DetailLoanView: View {
                 
 //                HIT API FUNC UPDATE LOAN
                 loanViewModel.updateLoan(idLoan: selectedLoan.id)
+                print("INI SELECTED LOAN", selectedLoan.id)
                 dismiss()
             })
             

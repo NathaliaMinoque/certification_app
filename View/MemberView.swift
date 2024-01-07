@@ -19,7 +19,7 @@ struct MemberView: View {
                             .bold()
                         Spacer()
                         
-//                        PINDAH ADD MEMBER VIEW
+                        //                        PINDAH ADD MEMBER VIEW
                         NavigationLink(destination: AddMemberView()) {
                             Image(systemName: "plus")
                                 .foregroundStyle(Color.blue)
@@ -28,32 +28,33 @@ struct MemberView: View {
                     .font(.title)
                     .padding()
                     
-//                    MENAMPILKAN DAFTAR MEMBER
+                    //                    MENAMPILKAN DAFTAR MEMBER
                     List(memberViewModel.listMember, id: \.id) { member in
                         NavigationLink(destination: DetailMemberView(selectedMember: member)) {
                             HStack {
                                 VStack(alignment: .leading) {
-                                    Text(member.name)
+                                    Text("\(member.name) (\(member.id))")
                                         .font(.headline)
                                         .foregroundColor(Color.black)
-                                         Text(member.address)
+                                    Text(member.address)
                                         .font(.footnote)
                                         .foregroundColor(Color.black)
                                     Text(member.phone)
-                                   .font(.footnote)
-                                   .foregroundColor(Color.black)
+                                        .font(.footnote)
+                                        .foregroundColor(Color.black)
+                             
                                 }
                                 
                             }
                         }
                     }
                     .onAppear {
-//                        HIT API FUNCTION
+                        //                        HIT API FUNCTION
                         memberViewModel.readMemberAll()
                     }
                     
                     
-                   
+                    
                     
                 }
             }

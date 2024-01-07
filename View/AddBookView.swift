@@ -11,8 +11,9 @@ struct AddBookView: View {
     
     @ObservedObject var bookViewModel = BookViewModel()
     @Environment(\.dismiss) var dismiss
-//    tangkap
-//    var selectedBook: Book
+    //    tangkap
+    //    var selectedBook: Book
+    @State var showingAlert: Bool = false
     
     var body: some View {
         VStack{
@@ -24,12 +25,20 @@ struct AddBookView: View {
                         rightButton: "Save",
                         leftFunction: {dismiss()},
                         rightFunction: {
-                bookViewModel.createBook(bookString: bookViewModel.bookString)
-                print(bookViewModel.bookString)
-                            dismiss()
+                //                error handling null
+                if bookViewModel.bookString.title != "" && bookViewModel.bookString.author != "" && bookViewModel.bookString.published_year != "" {
+                    
+                    bookViewModel.createBook(bookString: bookViewModel.bookString)
+                    print(bookViewModel.bookString)
+                    dismiss()
+                }else{
+                    //                        ALERT DATA MASIH KOSONG
+                    showingAlert = true
+                }
+                
             })
             
-//            menampilkan form
+            //            menampilkan form
             Form {
                 Section(header: Text("Book Details")) {
                     TextField("Title", text: $bookViewModel.bookString.title)
@@ -38,7 +47,18 @@ struct AddBookView: View {
                 }
             }
             
-           
+            //                ALERT DATA KOSONG
+            .alert(isPresented: $showingAlert) {
+                Alert(
+                    title: Text("Could not save the data"),
+                    message: Text("Please fill out all details"),
+                    primaryButton: .destructive(Text("Discard")) {
+                        print("Deleting...")
+                        dismiss()
+                    },
+                    secondaryButton: .cancel()
+                )
+            }
         }
     }
 }

@@ -31,6 +31,8 @@ struct DetailMemberView: View {
                 
 //                MENAMPILKAN DATA MEMBER BERUPA TEXTFIELD
                 Section(header: Text("Member Details")) {
+                    Text("\(memberViewModel.member.id)")
+                        .foregroundColor(.gray)
                     TextField("name", text: $memberViewModel.member.name)
                     TextField("address", text: $memberViewModel.member.address)
                     TextField("phone", text: $memberViewModel.member.phone)
