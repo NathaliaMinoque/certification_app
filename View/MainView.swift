@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MainView: View {
     var body: some View {
-//        menampilkan tab view
+//        show tab view
         TabView {
             BookView()
                 .tabItem {
